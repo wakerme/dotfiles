@@ -1,0 +1,25 @@
+""" Plugins  -------------------------
+
+""" Plugin settings  -------------------------
+
+""" Common settings -------------------------
+set clipboard=unnamed
+set incsearch
+set ignorecase
+set smartcase
+set nu
+
+""" My Mappings -----------------------------
+inoremap jk <ESC>
+nmap <Space>jn i<CR><Esc>
+nmap <Space>jo i<CR><Esc>k$
+nmap <Space>sv :vsp<CR>
+nmap <Space>sg :sp<CR>
+nmap <Space>sq :q<CR>
+nmap <Space>sQ :qa<CR>
+nmap <Space>sa ggVG
+nmap <Leader><Space> :nohl<CR>
+nmap <Space><CR> o<Esc>
+map Y y$
+map D d$
+"vmap p "_dp

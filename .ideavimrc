@@ -1,0 +1,252 @@
+" Source
+" source ~/.vimrc
+
+" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+" set scrolloff=5
+
+" Do incremental searching.
+" set incsearch
+
+" Don't use Ex mode, use Q for formatting.
+" map Q gq
+
+" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+" Map \r to the Reformat Code action
+" map \r <Action>(ReformatCode)
+
+" Map <leader>d to start debug
+" map <leader>d <Action>(Debug)
+
+" Map \b to toggle the breakpoint on the current line
+" map \b <Action>(ToggleLineBreakpoint)
+
+
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+" ==========================================================
+" ========================= Basic ==========================
+" ==========================================================
+" Map leader to space
+let mapleader=" "
+
+" Plugins
+set easymotion
+set NERDTree
+set surround
+set multiple-cursors
+set commentary
+set ReplaceWithRegister
+set argtextobj
+set exchange
+set textobj-entire
+set highlightedyank
+set vim-paragraph-motion
+set textobj-indent
+set matchit
+set quickscope
+set sneak
+
+" Plugin settings
+let g:argtextobj_pairs="[:],(:),<:>"
+
+" Common settings
+set nu
+set rnu
+set so=5
+set showmode
+set clipboard^=unnamed,unnamedplus
+set incsearch
+set ignorecase
+set smartcase
+" set keep-english-in-normal-and-restore-in-insert
+" set keep-english-in-normal
+
+" Idea specific settings
+set ideajoin
+set idearefactormode=keep
+" set ideastatusicon=gray
+
+" Mappings
+inoremap jk <Esc>
+nnoremap J gT
+nnoremap K gt
+noremap Y y$
+
+" Plugin mappings
+map <Leader><Leader>s <Plug>(easymotion-f2)
+map <Leader><Leader>S <Plug>(easymotion-F2)
+" map <Leader><Leader>f <Plug>(easymotion-f)
+" map <Leader><Leader>F <Plug>(easymotion-F)
+" map <Leader><Leader>t <Plug>(easymotion-t)
+" map <Leader><Leader>T <Plug>(easymotion-T)
+" map <Leader><Leader>ge <Plug>(easymotion-ge)
+" map <Leader><Leader>gE <Plug>(easymotion-gE)
+" map <Leader><Leader>s <Plug>(easymotion-s)
+
+" Plugin command mappings
+" noremap \t :NERDTree<CR>
+" noremap \f :NERDTreeFocus<CR>
+" noremap \T :NERDTreeToggle<CR>
+" noremap \c :NERDTreeClose<CR>
+" noremap \F :NERDTreeFind<CR>
+" noremap \r :NERDTreeRefreshRoot<CR>
+
+" ==========================================================
+" ========================= Others =========================
+" ==========================================================
+map <A-v> <Action>(VimPluginToggle)
+map <Leader>si <Action>(ShowIntentionActions)
+map <Leader>l <Action>(EditorCompleteStatement)
+inoremap <C-l> <Esc>:action EditorCompleteStatement<CR>
+map <Leader>ri <Action>(RevealIn)
+map <Leader>hi <Action>(LocalHistory.ShowHistory)
+map <Leader>rv <Action>(IdeaVim.ReloadVimRc.reload)
+noremap <Leader>` <ESC>:action SelectInProjectView<CR>
+
+" ==========================================================
+" ========================= File ===========================
+" ==========================================================
+map <Leader>nc <Action>(NewClass)
+map <Leader>nf <Action>(NewFile)
+map <Leader>np <Action>(NewPackageInfo)
+map <Leader>nF <Action>(HTTP.Request.NewFile)
+map <Leader>D <Action>($Delete)
+
+" ==========================================================
+" ========================= Edit ===========================
+" ==========================================================
+map U <Action>($Redo)
+" map <Leader>t <Action>(SelectAllOccurrences)
+" map <Leader>t <Action>(UnselectPreviousOccurrence)
+map <Leader>fp <Action>(FindInPath)
+" map <Leader>t <Action>(ReplaceInPath)
+" map <Leader>t <Action>(FindUsages)
+" map <Leader>t <Action>(ShowUsages)
+" map <Leader>t <Action>(FindUsagesInFile)
+
+" ==========================================================
+" ========================= View ===========================
+" ==========================================================
+map <Leader>qi <Action>(QuickImplementations)
+map <Leader>qt <Action>(QuickTypeDefinition)
+map <Leader>qd <Action>(QuickJavaDoc)
+map <Leader>fE <Action>(RecentFiles)
+map <Leader>fe <Action>(RecentChangedFiles)
+map <Leader>cl <Action>(ChangeLaf)
+
+" ==========================================================
+" ====================== Tool Window =======================
+" ==========================================================
+map <Leader>tc <Action>(ActivateCommitToolWindow)
+map <Leader>tp <Action>(ActivateProjectToolWindow)
+map <Leader>ts <Action>(ActivateStructureToolWindow)
+map <Leader>tv <Action>(ActivateVersionControlToolWindow)
+map <Leader>tS <Action>(ActivateCheckStyleToolWindow)
+map <Leader>te <Action>(ActivateEndpointsToolWindow)
+map <Leader>tm <Action>(ActivateMavenToolWindow)
+map <Leader>tt <Action>(ActivateTerminalToolWindow)
+map <Leader>to <Action>(ActivateTODOToolWindow)
+
+" ==========================================================
+" ====================== Appearance ========================
+" ==========================================================
+map <Leader>z <Action>(ToggleZenMode)
+
+" ==========================================================
+" ======================= Navigate =========================
+" ==========================================================
+map gW <Action>(SearchEverywhere)
+map gC <Action>(GotoClass)
+map gF <Action>(GotoFile)
+map gS <Action>(GotoSymbol)
+" map <Leader>gU <Action>(GotoUrlAction)
+map <Leader>w <Action>(GotoNextError)
+map <Leader>b <Action>(GotoPreviousError)
+map gd <Action>(GotoDeclaration)
+map gi <Action>(GotoImplementation)
+map gD <Action>(GotoTypeDeclaration)
+map gs <Action>(GotoSuperMethod)
+map gt <Action>(GotoTest)
+map [[ <Action>(MethodUp)
+map ]] <Action>(MethodDown)
+map <Leader>fo <Action>(FileStructurePopup)
+" map \f <Action>(ShowFilePath)
+
+" ==========================================================
+" ========================= Code ===========================
+" ==========================================================
+map <Leader>cg <Action>(Generate)
+map <Leader>cd <Action>(javadoc.generatorAll)
+map <Leader>ys <Action>(SurroundWith)
+map zC <Action>(CollapseAllRegions)
+map zO <action>(expandAllRegions)
+
+" ==========================================================
+" ======================= Refactor =========================
+" ==========================================================
+map <Leader>re <Action>(RenameElement)
+map <Leader>rf <Action>(RenameFile)
+map <Leader>ic <Action>(IntroduceConstant)
+map <Leader>iv <Action>(IntroduceVariable)
+map <Leader>if <Action>(IntroduceField)
+map <Leader>ip <Action>(IntroduceParameter)
+map <Leader>iP <Action>(IntroduceFunctionalParameter)
+map <Leader>iV <Action>(IntroduceFunctionalVariable)
+map <Leader>io <Action>(IntroduceParameterObject)
+map <Leader>em <Action>(ExtractMethod)
+map <Leader>rm <Action>(ReplaceMethodWithMethodObject)
+map <Leader>ec <Action>(ExtractClass)
+map <Leader>ei <Action>(ExtractInterface)
+map <Leader>es <Action>(ExtractSuperClass)
+map <Leader>in <Action>(Inline)
+map <Leader>md <Action>(MethodDuplicates)
+map <Leader>sd <Action>(SafeDelete)
+map <Leader>ce <Action>(CopyElement)
+
+" ==========================================================
+" ======================== Build ===========================
+" ==========================================================
+map <Leader>rb <Action>(CompileProject)
+
+" ==========================================================
+" ========================= Run ============================
+" ==========================================================
+map \r <Action>(Run)
+map \d <Action>(Debug)
+map \s <Action>(Stop)
+map \R <Action>(RunClass)
+map \D <Action>(DebugClass)
+" map \rc <Action>(ChooseRunConfiguration)
+" map \dc <Action>(ChooseDebugConfiguration)
+map \b <Action>(ToggleLineBreakpoint)
+" map <Leader>P <Action>(ToggleMethodBreakpoint)
+" map <Leader>vp <Action>(ViewBreakpoints)
+" map <Leader>o <Action>(StepOver)
+" map <Leader>i <Action>(StepInto)
+" map <Leader>O <Action>(StepOut)
+" map \c <Action>(Resume)
+
+" ==========================================================
+" ========================= Git ============================
+" ==========================================================
+map \c <Action>(CheckinProject)
+map \u <action>(Vcs.UpdateProject)
+map \p <action>(Vcs.Push)
+
+" ==========================================================
+" ======================= Window ===========================
+" ==========================================================
+map <Leader>qq <Action>(HideActiveWindow)
+map <Leader>qs <Action>(HideSideWindows)
+map <Leader>qa <Action>(HideAllWindows)
+map <Leader>xx <Action>(CloseContent)
+map <Leader>xX <Action>(ReopenClosedTab)
+map <Leader>xo <Action>(CloseAllEditorsButActive)
+map <Leader>xa <Action>(CloseAllEditors)
+
+" ==========================================================
+" ======================== Help ============================
+" ==========================================================
+map gA <Action>(GotoAction)

@@ -1,2 +1,2 @@
 # dotfiles
-My Dotfiles Configuration
+dotfiles managed by Dploy

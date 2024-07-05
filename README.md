@@ -1,2 +1,2 @@
 # dotfiles
-This dotfiles is managed using chezmoi.
+This dotfiles is managed using stow.

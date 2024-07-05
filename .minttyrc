@@ -1,0 +1,9 @@
+Font=MesloLGS NF
+FontHeight=12
+Locale=zh_CN
+Charset=UTF-8
+CursorBlinks=yes
+CursorType=block
+Term=xterm-256color
+ThemeFile=gruvbox
+Language=zh_CN

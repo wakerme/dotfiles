@@ -1,0 +1,185 @@
+" Source your .vimrc
+source ~/.vimrc
+
+" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+" set scrolloff=5
+
+" Do incremental searching.
+" set incsearch
+
+" Don't use Ex mode, use Q for formatting.
+" map Q gq
+
+" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+" Map \r to the Reformat Code action
+" map \r <Action>(ReformatCode)
+
+" Map <Leader>d to start debug
+" map <Leader>d <Action>(Debug)
+
+" Map \b to toggle the breakpoint on the current line
+" map \b <Action>(ToggleLineBreakpoint)
+
+
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+""" Plugins
+set easymotion
+" set sneak
+set NERDTree
+set surround
+set multiple-cursors
+set commentary
+set ReplaceWithRegister
+set argtextobj
+set exchange
+set textobj-entire
+set highlightedyank
+set vim-paragraph-motion
+set textobj-indent
+set matchit
+" set quickscope
+set which-key
+set notimeout
+" set timeoutlen=5000
+
+" Idea specific settings
+set ideajoin
+set clipboard+=ideaput
+set idearefactormode=keep
+" set ideastatusicon=gray
+
+""" IdeaVim development stuff
+set ideastrictmode
+
+" Shortcut Conflicts for Active Keymap, [说明](https://github.com/JetBrains/ideavim/wiki/sethandler)
+sethandler <C-w> n-v:ide i:vim
+sethandler <C-e> n-v:ide i:vim
+sethandler <C-s> n-v:ide i:vim
+sethandler <C-c> i:ide n-v:vim
+sethandler <C-v> i:ide n-v:vim
+sethandler <C-z> i:ide n-v:vim
+sethandler <C-t> a:vim
+
+" Plugin settings
+let g:argtextobj_pairs="[:],(:),{:},<:>"
+let g:WhichKey_DefaultDelay = 2000 " make the popup appear much slower
+" let g:WhichKey_ShowVimActions = "true"
+" let g:WhichKey_ShowTypedSequence = "true"
+
+" Plugin mappings
+nmap s <Plug>(easymotion-f2)
+nmap S <Plug>(easymotion-F2)
+
+" Plugin command mappings
+nmap <C-b> :NERDTree<CR>
+" noremap \f :NERDTreeFocus<CR>
+" noremap <C-N> :NERDTreeToggle<CR>
+" noremap \c :NERDTreeClose<CR>
+" noremap \F :NERDTreeFind<CR>
+" noremap \r :NERDTreeRefreshRoot<CR>
+
+""" Others
+nnoremap \e :e ~\.ideavimrc<CR>
+map <A-v> <Action>(VimPluginToggle)
+map <C-g>s <Action>(ShowSettings)
+map <C-g>t <Action>(ChangeLaf)
+map \r <Action>(IdeaVim.ReloadVimRc.reload)
+
+""" File
+map <C-n> <Action>(NewFile)
+map <C-f>n <Action>(NewClass)
+map <C-f>p <Action>(NewPackageInfo)
+map <C-f>k <Action>(Kotlin.NewFile)
+map <C-f>c <Action>(CollapseAll)
+
+""" Edit
+map u <Action>($Undo)
+map U <Action>($Redo)
+map <Leader>b <Action>(CompileProject)
+map <Leader>g <Action>(Generate)
+map <Leader>l <Action>(RecentLocations)
+map <Leader>o <Action>(FileStructurePopup)
+map <Leader>ys <Action>(SurroundWith)
+map <Leader>s <Action>(SelectInProjectView)
+map <Leader>z <Action>(ToggleZenMode)
+map <Leader>t <Action>(Terminal.OpenInTerminal)
+map <Leader>f <Action>(RevealIn)
+map <Leader>r <Action>(RenameElement)
+map <Leader>i <Action>(Inline)
+map <Leader>u <Action>(de.netnexus.CamelCasePlugin.ToggleCamelCase)
+map <C-/> <Action>(FindInPath)
+map <C-\> <Action>(SplitVertically)
+map <C--> <Action>(SplitHorizontally)
+map <C-=> <Action>(Unsplit)
+map <C-t> <Action>(ActivateTerminalToolWindow)
+map <C-S-r> <Action>(Refactorings.QuickListPopupAction)
+imap <C-l> <Esc>:action EditorCompleteStatement<CR>
+imap <C-j> :action EditorEnter<CR>
+map <A-u> <Action>(MoveStatementUp)
+map <A-d> <Action>(MoveStatementDown)
+map <A-b> <Action>(MoveElementLeft)
+map <A-f> <Action>(MoveElementRight)
+
+""" Git
+map <C-g>r <Action>(ChangesView.Revert)
+
+""" Refactor
+" map <Leader>R <Action>(RenameFile)
+" map <Leader>c <Action>(IntroduceConstant)
+" map <Leader>v <Action>(IntroduceVariable)
+" map <Leader>f <Action>(IntroduceField)
+" map <Leader>p <Action>(IntroduceParameter)
+" map <Leader>P <Action>(IntroduceFunctionalParameter)
+" map <Leader>V <Action>(IntroduceFunctionalVariable)
+" map <Leader>o <Action>(IntroduceParameterObject)
+map <Leader>m <Action>(ExtractMethod)
+" map <Leader>O <Action>(ReplaceMethodWithMethodObject)
+" map <Leader>C <Action>(ExtractClass)
+" map <Leader>I <Action>(ExtractInterface)
+" map <Leader>s <Action>(ExtractSuperClass)
+" map <Leader>d <Action>(MethodDuplicates)
+" map <Leader>d <Action>(SafeDelete)
+" map <Leader>e <Action>(CopyElement)
+
+""" Window
+map <C-q> <Action>(CloseContent)
+map <C-S-q> <Action>(ReopenClosedTab)
+map <C-f>a <Action>(CloseAllEditors)
+map <C-g>h <Action>(HideActiveWindow)
+
+""" Navigate
+map ga <Action>(GotoAction)
+map <C-p> <Action>(GotoFile)
+map ge <Action>(GotoNextError)
+map gE <Action>(GotoPreviousError)
+map gi <Action>(GotoImplementation)
+map gs <Action>(GotoSymbol)
+map gt <Action>(GotoTest)
+map gd <Action>(GotoDeclaration)
+map gD <Action>(GotoTypeDeclaration)
+map gh <Action>(QuickJavaDoc)
+map g; <Action>(JumpToLastChange)
+map [[ <Action>(MethodUp)
+map ]] <Action>(MethodDown)
+map <C-o> <Action>(Back)
+map <C-i> <Action>(Forward)
+
+""" Run
+map ,r <Action>(Run)
+map ,d <Action>(Debug)
+map ,R <Action>(RunClass)
+map ,D <Action>(DebugClass)
+map <C-c> <Action>(Stop)
+map ,b <Action>(ToggleLineBreakpoint)
+map <C-r> <Action>(Rerun)
+" map \rc <Action>(ChooseRunConfiguration)
+" map \dc <Action>(ChooseDebugConfiguration)
+" map <Leader>P <Action>(ToggleMethodBreakpoint)
+" map <Leader>vp <Action>(ViewBreakpoints)
+" map <Leader>o <Action>(StepOver)
+" map <Leader>i <Action>(StepInto)
+" map <Leader>O <Action>(StepOut)
+" map \c <Action>(Resume)
